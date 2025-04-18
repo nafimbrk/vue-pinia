@@ -1,7 +1,7 @@
 <script setup>
 import AppHeader from './components/Header.vue'
 import HasilUjian from './HasilUjian.vue'
-import InputNilai from './InputNIlai.vue'
+import InputNilai from './InputNilai.vue'
 
 </script>
 <template>

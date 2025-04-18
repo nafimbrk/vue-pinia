@@ -10,22 +10,23 @@ const nilaiStore = useNilaiStore()
 // });
 
 function onSubmitForm() {
-  // console.log(formData.value);
-
   if (nilaiStore.formData.id === -1) {
-    nilaiStore.nilai.push({...nilaiStore.formData})
+    // Tambah ID baru (misalnya berdasarkan waktu atau increment manual)
+    const newId = Date.now()
+    nilaiStore.nilai.push({
+      ...nilaiStore.formData,
+      id: newId
+    })
   } else {
-    let index = nilaiStore.nilai.map(item => item.id).indexOf(nilaiStore.formData.id)
-    if (index != -1) {
-      nilaiStore.nilai[index] = {...nilaiStore.formData}
+    let index = nilaiStore.nilai.findIndex(item => item.id === nilaiStore.formData.id)
+    if (index !== -1) {
+      nilaiStore.nilai[index] = { ...nilaiStore.formData }
     }
   }
-  nilaiStore.formData = {
-    id: -1,
-    nama: "",
-    nilai: 0
-  }
+
+  nilaiStore.resetForm()
 }
+
 </script>
 <template>
   <form @submit.prevent="onSubmitForm">

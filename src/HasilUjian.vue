@@ -4,9 +4,12 @@ import { useNilaiStore } from './stores/nilai';
 const nilaiStore = useNilaiStore()
 
 function onClickEdit(index) {
-  console.log(index)
-  nilaiStore.formData = {...nilaiStore.nilai[index]}
+  nilaiStore.formData.id = nilaiStore.nilai[index].id
+  nilaiStore.formData.nama = nilaiStore.nilai[index].nama
+  nilaiStore.formData.nilai = nilaiStore.nilai[index].nilai
 }
+
+
 </script>
 <template>
   <div>
